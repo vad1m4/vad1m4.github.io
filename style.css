@@ -151,8 +151,8 @@ ul>li {
 /* --- --- NAVBAR STUFF END --- --- */
 /* --- --- ABOUT ME SECTION STUFF START --- --- */
 .about_me_container {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  height: 100vh; 
+  max-height: -webkit-fill-available;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -193,8 +193,8 @@ ul>li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  height: 100vh; 
+  max-height: -webkit-fill-available;
   position: relative;
   z-index: 2;
 }
@@ -341,8 +341,8 @@ ul>li {
   }
 
   .nav_menu_container {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    height: 100vh; 
+    max-height: -webkit-fill-available;
   }
 
   .nav_item {
