@@ -8,20 +8,21 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Lobster&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Space+Mono:wght@700&display=swap"
+		rel="stylesheet">
 	<title>vad1m4 - Portfolio</title>
 </head>
 
 <body>
 	<div id="blob"></div>
 	<div id="blur" style="backdrop-filter: blur(79px)"></div>
-	<header>
+	<header id="home" class="header">
 		<div class="navbar_container">
 			<div class="navbar">
-				<a href="#" class="navbar_label">vad1m4</a>
+				<a href="#home" class="navbar_label">vad1m4</a>
 				<ul class="nav_menu">
 					<li class="nav_item">
-						<a href="#" class="nav_link">Home</a>
+						<a href="#home" class="nav_link">Home</a>
 					</li>
 					<li class="nav_item">
 						<a href="#" class="nav_link">About</a>
@@ -30,9 +31,10 @@
 						<a href="#" class="nav_link">Projects</a>
 					</li>
 					<li class="nav_item">
-						<a href="# class="nav_link"">Contacts</a>
+						<a href="#" class=" nav_link"">Contacts</a>
 					</li>
-					<li class="invisible"></li>
+					<li class=" invisible">
+					</li>
 					<li class="invisible"></li>
 					<li class="invisible"></li>
 					<li class="invisible"></li>
@@ -51,7 +53,40 @@
 			</div>
 		</div>
 	</header>
+	<section class="about_me_container">
+		<div class="about_me">
+			<h1>Hello! I'm Vadim.</h1>
+			<div class="typewriter_multi">
+				<p>I'm <span class="animated"></span></p>
+			</div>
+		</div>
+	</section>
+	<section class="projects_container">
+		<div class="projects_text" data-value="MY PROJECTS">
+			<h1>MY PROJECTS</h1>
+		</div>
+		<div class="projects_info">
+			<div id="projects">
+				<div class="project"></div>
+				<div class="project"></div>
+				<div class="project"></div>
+				<div class="project"></div>
+				<div class="project"></div>
+				<div class="project"></div>
+			</div>
+		</div>
+
+	</section>
 	<script src="script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+	<script>
+		var type = new Typed(".animated", {
+			strings: ["a Python Developer", "a Computer specialist", "an Ethernet Management Assistant", "a Young Student With Ambitions"],
+			typeSpeed: 100,
+			backspeed: 200,
+			loop: true
+		})
+	</script>
 </body>
 
 </html>
