@@ -1,5 +1,5 @@
 :root {
-  --card-color: #292828b9;
+  --card-color: #292828b9; 
 } 
 
 * {
@@ -152,7 +152,7 @@ ul>li {
 /* --- --- ABOUT ME SECTION STUFF START --- --- */
 .about_me_container {
   height: 100vh; 
-  max-height: -webkit-fill-available;
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -194,7 +194,7 @@ ul>li {
   flex-direction: column;
   align-items: center;
   height: 100vh; 
-  max-height: -webkit-fill-available;
+  height: calc(var(--vh, 1vh) * 100);
   position: relative;
   z-index: 2;
 }
@@ -342,7 +342,7 @@ ul>li {
 
   .nav_menu_container {
     height: 100vh; 
-    max-height: -webkit-fill-available;
+  height: calc(var(--vh, 1vh) * 100);
   }
 
   .nav_item {

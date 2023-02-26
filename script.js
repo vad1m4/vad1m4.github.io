@@ -2,6 +2,14 @@ function print(text) {
     console.log(text)
 }
 
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+window.addEventListener('resize', () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
 // adds delay, i needed that to make the resize_blur work. if not for the delay, it would simply not work
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
