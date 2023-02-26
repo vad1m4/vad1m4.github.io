@@ -4,16 +4,19 @@ function print(text) {
 
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-window.addEventListener('scroll', () => {
+function changeVh() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-  });
+}
+window.addEventListener('scroll', () => {
+    changeVh()
+});
 
 window.addEventListener('resize', () => {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+    changeVh()
 });
+
+window.onload = () => changeVh()
 
 // adds delay, i needed that to make the resize_blur work. if not for the delay, it would simply not work
 function delay(time) {
@@ -142,17 +145,17 @@ document.querySelector(".projects_text").onclick = event => {
 
 // projects glowing stuff
 const handleOnMouseMove = e => {
-    const { currentTarget : target } = e;
+    const { currentTarget: target } = e;
 
     const rect = target.getBoundingClientRect(),
         x = e.clientX - rect.left,
         y = e.clientY - rect.top;
-        
+
     target.style.setProperty("--mouse-x", `${x}px`);
     target.style.setProperty("--mouse-y", `${y}px`);
 };
 
-for(const project of document.querySelectorAll(".project")) {
+for (const project of document.querySelectorAll(".project")) {
     project.onmousemove = e => handleOnMouseMove(e)
 }
 
