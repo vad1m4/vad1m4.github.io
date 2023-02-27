@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -8,15 +8,14 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Space+Mono:wght@700&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Gloock&family=VT323&display=swap" rel="stylesheet">
 	<title>vad1m4 - Portfolio</title>
 </head>
 
 <body>
 	<div id="blob"></div>
 	<div id="blur" style="backdrop-filter: blur(79px)"></div>
-	<header class="header">
+	<header>
 		<div class="navbar_container">
 			<div class="navbar">
 				<a href="#home" class="navbar_label">vad1m4</a>
@@ -28,7 +27,7 @@
 						<a href="#" class="nav_link">About</a>
 					</li>
 					<li class="nav_item">
-						<a href="#" class="nav_link">Projects</a>
+						<a href="#projects" class="nav_link">Projects</a>
 					</li>
 					<li class="nav_item">
 						<a href="#" class=" nav_link"">Contacts</a>
@@ -61,21 +60,153 @@
 			</div>
 		</div>
 	</section>
-	<section class="projects_container">
-		<div class="projects_text" data-value="MY PROJECTS">
-			<h1>MY PROJECTS</h1>
-		</div>
+	<section id="projects" class="projects_container">
+		<p class="projects_text" data-value="MY CODING PROJECTS">
+			MY CODING PROJECTS
+		</p>
 		<div class="projects_info">
-			<div id="projects">
-				<div class="project"></div>
-				<div class="project"></div>
-				<div class="project"></div>
-				<div class="project"></div>
-				<div class="project"></div>
-				<div class="project"></div>
+			<div id="project-s">
+				<a target="_blank" href="https://github.com/vad1m4/fill_wanted_suspect" class="project">
+					<div class="project_border"></div>
+					<div class="project_content">
+						<i class="fa-solid fa-handcuffs fa-5x"></i>
+						<p class="project_name">Wanted template filler</p>
+						<p class="project_desc">A Python application that fills out a template for a poster of a wanted
+							suspect. It was created purely for enhancing LSPDFR roleplay.</p>
+						<p class="project_lernmor">Learn more</p>
+					</div>
+				</a>
+				<a target="_blank" href="https://github.com/vad1m4/stacks_counter" class="project">
+					<div class="project_border"></div>
+					<div class="project_content">
+						<i class="fa-solid fa-screwdriver-wrench fa-5x"></i>
+						<p class="project_name">Stacks counter</p>
+						<p class="project_desc">An application that translates raw numbers into Minecraft stacks. It was
+							created to help builders trying to gather resources.</p>
+						<p class="project_lernmor">Learn more</p>
+					</div>
+				</a>
+				<a class="project">
+					<div class="project_border"></div>
+					<div class="project_content">
+						<i class="fa-regular fa-lightbulb fa-5x"></i>
+						<p class="project_name">Electricity outage bot</p>
+						<p class="project_desc">Another Telegram Bot written in Python. This bot uses Termux-API to
+							check for AC power and sends messages when the power is out.</p>
+						<p class="project_notopnsrc">This project is <span class="red"><b>not</b></span> open source</p>
+					</div>
+				</a>
+				<a class="project">
+					<div class="project_border"></div>
+					<div class="project_content">
+						<i class="fa-solid fa-graduation-cap fa-5x"></i>
+						<p class="project_name">University Telegram Bot</p>
+						<p class="project_desc">A Telegram Bot written in Python that helps students navigate around the
+							university by providing contact details. </p>
+						<p class="project_notopnsrc">This project is <span class="red"><b>not</b></span> open source</p>
+					</div>
+				</a>
+				<a target="_blank" href="https://github.com/vad1m4/vad1m4.github.io" class="project">
+					<div class="project_border"></div>
+					<div class="project_content">
+						<i class="fa-solid fa-code fa-5x"></i>
+						<p class="project_name">This website</p>
+						<p class="project_desc">This website is made entirely by me. This is my second time dealing with
+							HTML & CSS, but first time implementing JS.</p>
+						<p class="project_lernmor">Learn more</p>
+					</div>
+				</a>
+				<a class="project">
+					<div class="project_border"></div>
+					<div class="project_content">
+						<i class="fa-solid fa-hryvnia fa-5x"></i>
+						<p class="project_name">Money organizer</p>
+						<p class="project_desc">This Python application helps people organize their funds. It features
+							a database to save history, loans, spendings and income.
+						</p>
+						<p class="project_lernmor">Planned</p>
+					</div>
+				</a>
 			</div>
 		</div>
-
+	</section>
+	<section id="about_me" class="about_me_ext_container">
+		<div class="abt_me_peri_container">
+			<div class="abt_me">
+				<p class="header">ABOUT ME</p>
+				<p>My name is Vadim. I'm 15 years old and I'm from Lviv, Ukraine. I'm an amateur developer, I have
+					computer building skills and I know how to crimp RJ45 cables, set up Hikvision security cameras and
+					I have an overall experience with electrical devices. </p>
+			</div>
+			<div class="peri">
+				<p class="header">PERIPHERALS</p>
+				<ul>
+					<li>
+						<a target="_blank"
+							href="https://www.razer.com/gaming-keyboards/razer-huntsman-tournament-edition"
+							class="razer"">Razer Huntsman TE Red</a>
+					</li>
+					<li>
+						<a target=" _blank" href="https://www.razer.com/gaming-mice/razer-deathadder-essential" class="razer">Razer
+							Deathadder Essential</a>
+					</li>
+					<li>
+						<a target="_blank"
+							href="https://hyperx.com/products/hyperx-cloud-core-7-1?variant=41031689699485"
+							class="hyperx"">HyperX Cloud Core</a>
+					</li>
+					<li>
+						<a target=" _blank" href="https://row.hyperx.com/products/hyperx-solocast-usb-microphone?variant=40916449558733"
+							class="hyperx">HyperX Solocast</a>
+					</li>
+				</ul>
+			</div>
+			<!-- <span><img
+						src="https://images.emojiterra.com/twitter/v14.0/128px/1f1fa-1f1e6.png" width="40" height="40"
+						alt="ua-emoji" style="transform: translateY(20%);"></span> -->
+		</div>
+		<p class="header big-margin">SPECIFICATIONS</p>
+		<div class="specs_container">
+			<div class="hardware">
+				<p class="header">HARDWARE</p>
+				<ul>
+					<li>
+						<a target="_blank" href="https://www.amd.com/en/products/cpu/amd-ryzen-7-5800x"
+							class="amd">Ryzen 7 5800x</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www.amd.com/en/products/graphics/radeon-rx-580" class="amd">RX
+							580(8GB)</a>
+					</li>
+					<li>
+						<p>16GB 3200mHz</p>
+					</li>
+					<li>
+						<p>1.25TB SSD & 1.0TB HDD</p>
+					</li>
+				</ul>
+			</div>
+			<div class="software">
+				<p class="header">SOFTWARE</p>
+				<ul>
+					<li>
+						<a target="_blank" href="https://code.visualstudio.com/" class="microsoft">Visual Studio
+							Code</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www.microsoft.com/en-us/software-download/windows10"
+							class="microsoft">Windows x64 Pro</a>
+					</li>
+					<li>
+						<a target="_blank" href="getpaint.net">paint.net for textures</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www.adobe.com/products/illustrator.html">Adobe Illustrator for
+							logos</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</section>
 	<script src="script.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -87,6 +218,7 @@
 			loop: true
 		})
 	</script>
+	<script src="https://kit.fontawesome.com/ffee9c76e5.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

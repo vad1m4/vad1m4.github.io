@@ -80,10 +80,10 @@ document.querySelectorAll("a").forEach(n => n.addEventListener("mouseout", () =>
     blob.classList.remove("active");
 }, false))
 
-// observer for on-scroll animation of projects text
+// observerfor on-scroll animation of projects text
 var returnArr = Array
 const observed = new Event("Observed")
-const observer = new IntersectionObserver((entries) => {
+const observer_prjanim = new IntersectionObserver((entries) => {
     returnArr = { key: Boolean };
     entries.forEach((entry) => {
         const target = entry.target.classList.value;
@@ -104,13 +104,14 @@ const observer = new IntersectionObserver((entries) => {
 const projects_text = document.querySelector(".projects_text")
 
 function anim_projects() {
+    console.log(returnArr)
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     const target = document.querySelector(".projects_text")
     let iterations = 0;
     const interval = setInterval(() => {
         target.innerText = target.innerText.split("")
             .map((letter, index) => {
-                if (index == 2) {
+                if (index == 2 || index == 9) {
                     return " "
                 }
                 if (index < iterations - 1) {
@@ -126,8 +127,8 @@ function anim_projects() {
     }, 30)
 }
 
-observer.observe(projects_text)
-addEventListener(
+observer_prjanim.observe(projects_text)
+window.addEventListener(
     "Observed",
     (e) => {
         if (returnArr["projects_text"]) {
@@ -143,19 +144,31 @@ document.querySelector(".projects_text").onclick = event => {
     anim_projects()
 }
 
-// projects glowing stuff
-const handleOnMouseMove = e => {
-    const { currentTarget: target } = e;
+// glowing shit for projects
+document.getElementById("projects").onmousemove = e => {
+    for (const project of document.querySelectorAll(".project")) {
+        const rect = project.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top;
 
-    const rect = target.getBoundingClientRect(),
-        x = e.clientX - rect.left,
-        y = e.clientY - rect.top;
-
-    target.style.setProperty("--mouse-x", `${x}px`);
-    target.style.setProperty("--mouse-y", `${y}px`);
+        project.style.setProperty("--mouse-x", `${x}px`);
+        project.style.setProperty("--mouse-y", `${y}px`);
+    };
 };
 
-for (const project of document.querySelectorAll(".project")) {
-    project.onmousemove = e => handleOnMouseMove(e)
-}
+// animations for projects (cards)
+const projects = document.querySelectorAll(".project")
+const observer_prj = new IntersectionObserver((elements) => {
+    print(elements)
+    elements.forEach((element) => {
+        if (element.isVisible) {
+            element.target.classList.toggle("visible");
+        } else {
+            element.target.classList.remove("visible");
+        }
+    });
+});
+projects.forEach(project => {
+    observer_prj.observe(project)
+});
 
