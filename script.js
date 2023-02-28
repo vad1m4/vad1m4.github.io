@@ -104,7 +104,6 @@ const observer_prjanim = new IntersectionObserver((entries) => {
 const projects_text = document.querySelector(".projects_text")
 
 function anim_projects() {
-    console.log(returnArr)
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     const target = document.querySelector(".projects_text")
     let iterations = 0;
@@ -158,10 +157,10 @@ document.getElementById("projects").onmousemove = e => {
 
 // animations for projects (cards)
 const projects = document.querySelectorAll(".project")
+print(projects)
 const observer_prj = new IntersectionObserver((elements) => {
-    print(elements)
     elements.forEach((element) => {
-        if (element.isVisible) {
+        if (element.isIntersecting) {
             element.target.classList.toggle("visible");
         } else {
             element.target.classList.remove("visible");
