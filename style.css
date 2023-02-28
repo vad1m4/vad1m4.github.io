@@ -91,12 +91,20 @@ li {
 
 .navbar {
   height: 100%;
-  padding: 10px 40px 10px 20px;
+  padding: 20px 40px 20px 20px;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: space-between;
-  border-bottom: #292828 solid 2px
+  transition: all 0.5s ease;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+}
+
+.navbar.sticky {
+  border-bottom: #292828 solid 2px;
+  background-color: #1c1c1cb9;
+  padding: 10px 40px 10px 20px;
 }
 
 .navbar_label {
@@ -115,7 +123,6 @@ li {
 .navbar_container {
   position: fixed;
   width: 100%;
-  background-color: #1c1c1cb9;
   z-index: 4;
 }
 
@@ -124,7 +131,7 @@ li {
   align-items: center;
   justify-content: center;
   gap: 55px;
-  animation: right_left 1s ease;
+  animation: right_left 1.5s ease-out;
 }
 
 .nav_link {
@@ -227,7 +234,6 @@ ul>li {
   font-family: 'VT323', monospace;
   font-size: 60px;
   transform: translateY(250%);
-  transition: all 0.3s ease;
   font-weight: 500;
 }
 
@@ -262,7 +268,11 @@ ul>li {
   border-radius: 10px;
   position: relative;
   transform: translateY(60%);
-  transition: all 0.3s ease;
+}
+
+.project,
+.projects_text {
+  transition: all 1s ease;
 }
 
 .project::before,
@@ -460,7 +470,7 @@ ul>li {
 
 @keyframes right_left {
   0% {
-    transform: translateX(300%);
+    transform: translateX(200%);
     opacity: 0;
   }
 

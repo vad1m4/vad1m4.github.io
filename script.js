@@ -1,7 +1,15 @@
+// yes i'm gross. cry about it
 function print(text) {
     console.log(text)
 }
 
+// stylish navbar
+window.addEventListener("scroll", function() {
+    const header = document.querySelector(".navbar");
+    header.classList.toggle("sticky", window.scrollY > 0)
+})
+
+// fixes vh for mobile
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 function changeVh() {
@@ -88,14 +96,10 @@ const observer_prjanim = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         const target = entry.target.classList.value;
         if (entry.isIntersecting) {
-            entry.target.classList.toggle("visible");
+            entry.target.classList.add("visible");
             returnArr[target] = true;
             dispatchEvent(observed)
-        } else {
-            entry.target.classList.remove("visible");
-            returnArr[target] = false;
-            dispatchEvent(observed)
-        }
+        } 
     });
     return returnArr
 });
@@ -161,9 +165,7 @@ print(projects)
 const observer_prj = new IntersectionObserver((elements) => {
     elements.forEach((element) => {
         if (element.isIntersecting) {
-            element.target.classList.toggle("visible");
-        } else {
-            element.target.classList.remove("visible");
+            element.target.classList.add("visible");
         }
     });
 });
