@@ -3,10 +3,27 @@ function print(text) {
     console.log(text)
 }
 
+function addEvent(element, evnt, funct) {
+    if (element.attachEvent)
+        return element.attachEvent('on' + evnt, funct);
+    else
+        return element.addEventListener(evnt, funct, false);
+}
+
 // stylish navbar
-window.addEventListener("scroll", function() {
+
+function hideNavMenu() {
+    if (!(window.scrollY > 50)) {
+        navMenu.classList.remove("active")
+        hamburger.classList.remove("active")
+    }
+}
+
+window.addEventListener("scroll", function () {
     const header = document.querySelector(".navbar");
     header.classList.toggle("sticky", window.scrollY > 0)
+    hamburger.classList.toggle("on", window.scrollY > 50)
+    hideNavMenu()
 })
 
 // fixes vh for mobile
@@ -16,15 +33,20 @@ function changeVh() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
-window.addEventListener('scroll', () => {
-    changeVh()
-});
+addEvent(
+    window,
+    "scroll",
+    changeVh())
 
-window.addEventListener('resize', () => {
-    changeVh()
-});
+addEvent(
+    window,
+    "resize",
+    changeVh())
 
-window.onload = () => changeVh()
+addEvent(
+    window,
+    "load",
+    changeVh())
 
 // adds delay, i needed that to make the resize_blur work. if not for the delay, it would simply not work
 function delay(time) {
@@ -68,25 +90,52 @@ window.onresize = event => {
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav_menu');
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-})
+addEvent(
+    hamburger,
+    "click",
+    function () {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+        hideNavMenu()
+    }
+)
 
-document.querySelectorAll(".nav_link").forEach(n => n.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-}))
+document.querySelectorAll(".nav_link").forEach(n => addEvent(
+    n,
+    "click",
+    function () {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+        hideNavMenu()
+    }
+))
 
 // changes blob's color when hovered over a clickable object
 const a = document.querySelector("a")
 
-document.querySelectorAll("a").forEach(n => n.addEventListener("mouseover", () => {
-    blob.classList.toggle("active");
-}, false))
-document.querySelectorAll("a").forEach(n => n.addEventListener("mouseout", () => {
-    blob.classList.remove("active");
-}, false))
+// document.querySelectorAll("a").forEach(n => n.addEventListener("mouseover", () => {
+//     blob.classList.toggle("active");
+// }, false))
+
+document.querySelectorAll("a").forEach(n => addEvent(
+    n,
+    "mouseover",
+    function () {
+        blob.classList.toggle("active");
+    }
+))
+
+document.querySelectorAll("a").forEach(n => addEvent(
+    n,
+    "mouseout",
+    function () {
+        blob.classList.toggle("active");
+    }
+))
+
+// document.querySelectorAll("a").forEach(n => n.addEventListener("mouseout", () => {
+//     blob.classList.remove("active");
+// }, false))
 
 // observerfor on-scroll animation of projects text
 var returnArr = Array
@@ -99,7 +148,7 @@ const observer_prjanim = new IntersectionObserver((entries) => {
             entry.target.classList.add("visible");
             returnArr[target] = true;
             dispatchEvent(observed)
-        } 
+        }
     });
     return returnArr
 });
@@ -140,24 +189,51 @@ window.addEventListener(
     },
     false
 );
-document.querySelector(".projects_text").onmouseover = event => {
+
+addEvent(
+    document.querySelector(".projects_text"),
+    "mouseover",
     anim_projects()
-}
-document.querySelector(".projects_text").onclick = event => {
+)
+
+addEvent(
+    document.querySelector(".projects_text"),
+    "click",
     anim_projects()
-}
+)
+
+// document.querySelector(".projects_text").onmouseover = event => {
+//     anim_projects()
+// }
+// document.querySelector(".projects_text").onclick = event => {
+//     anim_projects()
+// }
 
 // glowing shit for projects
-document.getElementById("projects").onmousemove = e => {
-    for (const project of document.querySelectorAll(".project")) {
-        const rect = project.getBoundingClientRect(),
-            x = e.clientX - rect.left,
-            y = e.clientY - rect.top;
-
-        project.style.setProperty("--mouse-x", `${x}px`);
-        project.style.setProperty("--mouse-y", `${y}px`);
-    };
-};
+addEvent(
+    document.getElementById("projects"),
+    "mousemove",
+    function (e) {
+        for (const project of document.querySelectorAll(".project")) {
+            const rect = project.getBoundingClientRect(),
+                x = e.clientX - rect.left,
+                y = e.clientY - rect.top;
+    
+            project.style.setProperty("--mouse-x", `${x}px`);
+            project.style.setProperty("--mouse-y", `${y}px`);
+        };
+    }
+)
+// e => {
+//     for (const project of document.querySelectorAll(".project")) {
+//         const rect = project.getBoundingClientRect(),
+//             x = e.clientX - rect.left,
+//             y = e.clientY - rect.top;
+// 
+//         project.style.setProperty("--mouse-x", `${x}px`);
+//         project.style.setProperty("--mouse-y", `${y}px`);
+//     };
+// };
 
 // animations for projects (cards)
 const projects = document.querySelectorAll(".project")
@@ -172,4 +248,46 @@ const observer_prj = new IntersectionObserver((elements) => {
 projects.forEach(project => {
     observer_prj.observe(project)
 });
+
+const projectS = document.getElementById('project-s');
+const project = document.querySelector('.project');
+const aboutSection = document.querySelector('.abt_me')
+const specifications = document.querySelector('.specifications')
+function calcRowItem() {
+    const height = projectS.offsetHeight;
+    if (height == 620) {
+        aboutSection.style.setProperty('max-width', '940px');
+        specifications.style.setProperty('max-width', '940px');
+        aboutSection.classList.remove('mbl-hdr')
+        specifications.classList.remove('mbl-hdr')
+    } else if (height == 940) {
+        aboutSection.style.setProperty('max-width', '620px');
+        specifications.style.setProperty('max-width', '620px');
+        aboutSection.classList.remove('mbl-hdr')
+        specifications.classList.remove('mbl-hdr')
+    } else {
+        aboutSection.style.setProperty('max-width', null);
+        specifications.style.setProperty('max-width', null);
+        aboutSection.classList.add('mbl-hdr')
+        specifications.classList.add('mbl-hdr')
+    }
+}
+
+addEvent(
+    window,
+    "load",
+    calcRowItem
+)
+
+addEvent(
+    window,
+    "resize",
+    calcRowItem
+)
+
+// window.addEventListener(("load"), calcRowItem(projectS, project))
+// window.onresize = () => calcRowItem(projectS, project)
+
+// window.addEventListener(("resize"), calcRowItem)
+
 
