@@ -5,6 +5,9 @@
   --razer-green: rgb(92, 245, 92);
   --amd-red: rgb(237, 28, 36);
   --microsoft-blue: rgb(0, 162, 237);
+  --hp-blue: rgb(0, 150, 214);
+  --illustrator-orange: rgb(220, 105, 32);
+  --ubuntu-orange: rgb(233, 84, 32);
 }
 
 .red {
@@ -132,6 +135,7 @@ li {
   position: fixed;
   width: 100%;
   z-index: 10;
+  backdrop-filter: blur(3px);
 }
 
 .nav_menu {
@@ -243,10 +247,12 @@ ul>li {
   font-size: 60px;
   transform: translateY(250%);
   font-weight: 500;
+  opacity: 0;
 }
 
 .projects_text.visible {
   transform: translateY(0%);
+  opacity: 1;
 }
 
 @media(max-width:631px) {
@@ -276,6 +282,7 @@ ul>li {
   border-radius: 10px;
   position: relative;
   transform: translateY(60%);
+  opacity: 0;
 }
 
 .project,
@@ -322,6 +329,7 @@ ul>li {
 
 .project.visible {
   transform: translateY(0%);
+  opacity: 1;
 }
 
 .project>.project_content>i {
@@ -462,29 +470,39 @@ ul>li {
   margin-bottom: 15px;
 }
 
-.razer,
-.amd,
-.hyperx,
-.microsoft,
-.rgb {
-  transition: all 0.6s;
-  font-weight: 600;
+.mbl-hdr>li {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 300px;
+}
 
+.mbl-hdr>li>.spec_content {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.mbl-hdr>li>.spec_content>h2 {
+  font-size: 30px;
+}
+
+.mbl-hdr>li>.spec_logo {
+  width: 80%;
 }
 
 .rgb {
   background: linear-gradient(90deg,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(255, 154, 0, 1) 10%,
-    rgba(208, 222, 33, 1) 20%,
-    rgba(79, 220, 74, 1) 30%,
-    rgba(63, 218, 216, 1) 40%,
-    rgba(47, 201, 226, 1) 50%,
-    rgba(28, 127, 238, 1) 60%,
-    rgba(95, 21, 242, 1) 70%,
-    rgba(186, 12, 248, 1) 80%,
-    rgba(251, 7, 217, 1) 90%,
-    rgba(255, 0, 0, 1) 100%);
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 154, 0, 1) 10%,
+      rgba(208, 222, 33, 1) 20%,
+      rgba(79, 220, 74, 1) 30%,
+      rgba(63, 218, 216, 1) 40%,
+      rgba(47, 201, 226, 1) 50%,
+      rgba(28, 127, 238, 1) 60%,
+      rgba(95, 21, 242, 1) 70%,
+      rgba(186, 12, 248, 1) 80%,
+      rgba(251, 7, 217, 1) 90%,
+      rgba(255, 0, 0, 1) 100%);
   /* background: linear-gradient(rgba(255,0,0,1) 0%, rgba(255,154,0,1) 10%, rgba(208,222,33,1) 20%, rgba(79,220,74,1) 30%, rgba(63,218,216,1) 40%, rgba(47,201,226,1) 50%, rgba(28,127,238,1) 60%, rgba(95,21,242,1) 70%, rgba(186,12,248,1) 80%, rgba(251,7,217,1) 90%, rgba(255,0,0,1) 100%) 
   0 0/100% 200%; */
   background-clip: text;
@@ -515,6 +533,44 @@ ul>li {
 .microsoft {
   color: var(--microsoft-blue);
 }
+
+.hp {
+  color: var(--hp-blue);
+}
+
+.illustrator {
+  color: var(--illustrator-orange)
+}
+
+.ubuntu {
+  color: var(--ubuntu-orange);
+}
+
+.razer,
+.amd,
+.hyperx,
+.microsoft,
+.rgb,
+.red,
+.hp,
+.illustrator,
+.ubuntu {
+  transition: all 0.6s;
+  font-weight: 600;
+
+}
+
+.amd:hover,
+.razer:hover,
+.microsoft:hover,
+.hyperx:hover,
+.rgb:hover,
+.hp:hover,
+.illustrator:hover,
+.ubuntu:hover {
+  color: white;
+}
+
 
 .grid-col-12 {
   position: relative;
@@ -548,16 +604,19 @@ ul>li {
 
 .hw-logo {
   grid-column-start: 6;
-  perspective: 5000px;
-  transform: rotateX(25deg) rotateY(25deg);
+  transform: rotateX(15deg) rotateY(15deg);
 }
 
-svg::after {
-  content: "";
-  position: absolute;
-  border-radius: inherit;
-  inset: 0;
-  background: linear-gradient(to right, red, blue);
+.spec_logo {
+  perspective: 5000px;
+  border-radius: 15px;
+  border: solid 1px #1c1c1cb9;
+  background-color: #525252b9;
+  transition: all 0.5s ease;
+}
+
+.spec_logo:hover {
+  background-color: #6f6f6fb9;
 }
 
 .hw-content {
@@ -584,13 +643,15 @@ svg::after {
   color: rgba(118, 118, 118, 0.392);
 }
 
+.animated {
+  transition: transform 1s ease, opacity 1s ease;
+  transform: translateY(60%);
+  opacity: 0;
+}
 
-.amd:hover,
-.razer:hover,
-.microsoft:hover,
-.hyperx:hover,
-.rgb:hover {
-  color: white;
+.animated.visible {
+  transform: translateY(0%);
+  opacity: 1;
 }
 
 /* .abt_me {

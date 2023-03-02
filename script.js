@@ -140,7 +140,7 @@ document.querySelectorAll("a").forEach(n => addEvent(
 // observerfor on-scroll animation of projects text
 var returnArr = Array
 const observed = new Event("Observed")
-const observer_prjanim = new IntersectionObserver((entries) => {
+const observeranim = new IntersectionObserver((entries) => {
     returnArr = { key: Boolean };
     entries.forEach((entry) => {
         const target = entry.target.classList.value;
@@ -179,7 +179,7 @@ function anim_projects() {
     }, 30)
 }
 
-observer_prjanim.observe(projects_text)
+observeranim.observe(projects_text)
 window.addEventListener(
     "Observed",
     (e) => {
@@ -238,7 +238,7 @@ addEvent(
 // animations for projects (cards)
 const projects = document.querySelectorAll(".project")
 print(projects)
-const observer_prj = new IntersectionObserver((elements) => {
+const observer = new IntersectionObserver((elements) => {
     elements.forEach((element) => {
         if (element.isIntersecting) {
             element.target.classList.add("visible");
@@ -246,7 +246,7 @@ const observer_prj = new IntersectionObserver((elements) => {
     });
 });
 projects.forEach(project => {
-    observer_prj.observe(project)
+    observer.observe(project)
 });
 
 const projectS = document.getElementById('project-s');
@@ -290,4 +290,9 @@ addEvent(
 
 // window.addEventListener(("resize"), calcRowItem)
 
+
+const animated = document.querySelectorAll('.animated')
+animated.forEach(element => {
+    observer.observe(element)
+});
 
