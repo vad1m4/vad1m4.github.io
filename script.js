@@ -83,9 +83,9 @@ function resize_blur(event) {
 
 }
 
-window.onresize = event => {
-    resize_blur(event);
-}
+window.addEventListener("resize", function (event) {
+    resize_blur(event)
+})
 // stuff for hamburger menu (yes it's called a hamburger menu fuck off)
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav_menu');
@@ -113,10 +113,6 @@ document.querySelectorAll(".nav_link").forEach(n => addEvent(
 // changes blob's color when hovered over a clickable object
 const a = document.querySelector("a")
 
-// document.querySelectorAll("a").forEach(n => n.addEventListener("mouseover", () => {
-//     blob.classList.toggle("active");
-// }, false))
-
 document.querySelectorAll("a").forEach(n => addEvent(
     n,
     "mouseover",
@@ -132,10 +128,6 @@ document.querySelectorAll("a").forEach(n => addEvent(
         blob.classList.toggle("active");
     }
 ))
-
-// document.querySelectorAll("a").forEach(n => n.addEventListener("mouseout", () => {
-//     blob.classList.remove("active");
-// }, false))
 
 // observerfor on-scroll animation of projects text
 var returnArr = Array
@@ -202,13 +194,6 @@ addEvent(
     anim_projects()
 )
 
-// document.querySelector(".projects_text").onmouseover = event => {
-//     anim_projects()
-// }
-// document.querySelector(".projects_text").onclick = event => {
-//     anim_projects()
-// }
-
 // glowing shit for projects
 addEvent(
     document.getElementById("projects"),
@@ -224,16 +209,6 @@ addEvent(
         };
     }
 )
-// e => {
-//     for (const project of document.querySelectorAll(".project")) {
-//         const rect = project.getBoundingClientRect(),
-//             x = e.clientX - rect.left,
-//             y = e.clientY - rect.top;
-// 
-//         project.style.setProperty("--mouse-x", `${x}px`);
-//         project.style.setProperty("--mouse-y", `${y}px`);
-//     };
-// };
 
 // animations for projects (cards)
 const projects = document.querySelectorAll(".project")
@@ -250,27 +225,21 @@ projects.forEach(project => {
 });
 
 const projectS = document.getElementById('project-s');
-const project = document.querySelector('.project');
-const aboutSection = document.querySelector('.abt_me')
-const specifications = document.querySelector('.specifications')
+const changeWidthElements = document.querySelectorAll('.width-dynamic-projects')
 function calcRowItem() {
     const height = projectS.offsetHeight;
-    if (height == 620) {
-        aboutSection.style.setProperty('max-width', '940px');
-        specifications.style.setProperty('max-width', '940px');
-        aboutSection.classList.remove('mbl-hdr')
-        specifications.classList.remove('mbl-hdr')
-    } else if (height == 940) {
-        aboutSection.style.setProperty('max-width', '620px');
-        specifications.style.setProperty('max-width', '620px');
-        aboutSection.classList.remove('mbl-hdr')
-        specifications.classList.remove('mbl-hdr')
-    } else {
-        aboutSection.style.setProperty('max-width', null);
-        specifications.style.setProperty('max-width', null);
-        aboutSection.classList.add('mbl-hdr')
-        specifications.classList.add('mbl-hdr')
-    }
+    changeWidthElements.forEach(element => {
+        if (height == 620) {
+            element.style.setProperty('max-width', '940px');
+            element.classList.remove('mbl-hdr')
+        } else if (height == 940) {
+            element.style.setProperty('max-width', '620px');
+            element.classList.remove('mbl-hdr')
+        } else {
+            element.style.setProperty('max-width', null);
+            element.classList.add('mbl-hdr')
+        };
+    });
 }
 
 addEvent(
@@ -284,12 +253,6 @@ addEvent(
     "resize",
     calcRowItem
 )
-
-// window.addEventListener(("load"), calcRowItem(projectS, project))
-// window.onresize = () => calcRowItem(projectS, project)
-
-// window.addEventListener(("resize"), calcRowItem)
-
 
 const animated = document.querySelectorAll('.animated')
 animated.forEach(element => {
