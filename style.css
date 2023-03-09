@@ -82,6 +82,7 @@ li {
   transition: all 1s ease;
   animation: rotate_object 20s infinite;
   z-index: 1;
+  filter: blur(79px);
 }
 
 #blob.active {
@@ -89,10 +90,20 @@ li {
 }
 
 #blur {
-  height: 150%;
-  width: 150%;
+  height: 500%;
+  width: 500%;
   z-index: 2;
   position: fixed;
+}
+
+@supports(backdrop-filter: blur()) {
+  #blob {
+    filter: none;
+  }
+
+  #blur {
+    backdrop-filter: blur(79px);
+  }
 }
 
 @keyframes rotate_object {

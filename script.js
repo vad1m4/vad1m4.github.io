@@ -69,7 +69,7 @@ document.body.onclick = event => {
 }
 
 document.body.onpointermove = event => {
-    move_blob(event, 3000)
+    move_blob(event, 8000)
 }
 // needed this because the blur layer stayed the same size as the window size when the site was loaded, exposing the raw blob when the window resized again
 const blur = document.getElementById("blur");
