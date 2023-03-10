@@ -82,6 +82,7 @@ li {
   transition: all 1s ease;
   animation: rotate_object 20s infinite;
   z-index: 1;
+  filter: blur(79px);
 }
 
 #blob.active {
@@ -752,19 +753,76 @@ ul>li {
   margin: auto auto;
 }
 
+
+/* --- --- SKILL SECTION STUFF END --- --- */
+/* --- --- WORK TOGETEHR STUFF START --- --- */
 .work_together_container {
   position: relative;
   z-index: 3;
+  display: flex;
+  justify-content: center;
 }
 
 .row-1 {
   display: grid;
 }
 
+.work_together {
+  gap: 0;
+}
 
-/* --- --- SKILL SECTION STUFF END --- --- */
-/* --- --- ????? STUFF START --- --- */
-/* --- --- ????? STUFF END --- --- */
+.work_together>div {
+  text-transform: lowercase;
+  line-height: 0.8;
+  margin: 0;
+  font-size: 60px;
+  font-weight: 800;
+  height: auto;
+}
+
+.work_together>div>span {
+  text-shadow: 1.5px 0 white;
+  letter-spacing: -0.18rem;
+
+}
+
+.work_together>div>span {
+  font-family: 'antique-olive-bold', sans-serif;
+
+}
+
+.work_together>div:nth-child(1) {
+  grid-column: span 5 / span 5;
+  grid-column-start: 5;
+  margin-left: 15px;
+}
+
+.work_together>div:nth-child(2) {
+  grid-column: span 4 / span 4;
+  grid-column-start: 3;
+  margin-left: 50px;
+}
+
+.work_together>div:nth-child(3) {
+  grid-column: span 5 / span 5;
+  grid-column-start: 8;
+  display: flex;
+  align-items: flex-end;
+}
+
+.get_in_touch>button {
+  display: inline;
+  padding: 10px;
+  border-radius: 30px;
+
+}
+
+.work_together>div:nth-child(4) {
+  grid-column: span 5 / span 5;
+  grid-column-start: 5;
+}
+
+/* --- --- WORK TOGETEHR STUFF END --- --- */
 /* --- --- GENERAL STUFF --- --- */
 @keyframes bottom_top {
   0% {
