@@ -12,6 +12,22 @@
   --python-green: #26ce7a;
   --html-orange: rgb(255, 87, 51);
   --css-blue: rgb(38, 77, 228);
+  --discord-blue: rgb(115, 138, 219);
+  --reddit-orange: rgb(255, 69, 0);
+  --telegram-blue: rgb(34, 158, 217);
+  --gmail-red: rgb(234, 67, 53);
+}
+
+@font-face {
+  font-family: 'antique-olive-bold';
+  src: url('fonts/AntiqueOlive-Bold.eot');
+  src: url('fonts/AntiqueOlive-Bold.eot?#iefix') format('embedded-opentype'),
+    url('fonts/AntiqueOlive-Bold.woff2') format('woff2'),
+    url('fonts/AntiqueOlive-Bold.woff') format('woff'),
+    url('fonts/AntiqueOlive-Bold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 .red {
@@ -660,7 +676,6 @@ ul>li {
 /* --- --- ABOUT ME EXTENDED STUFF END --- --- */
 /* --- --- SKILL SECTION STUFF START --- --- */
 .skills_container_outer {
-  padding-top: 200px;
   display: flex;
   align-content: center;
   flex-wrap: wrap;
@@ -772,26 +787,26 @@ ul>li {
 
 .work_together {
   gap: 0;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .work_together,
-.wtg {
-  line-height: 0.8;
+.wtgbtn {
+  line-height: 0.9;
   margin: 0;
-  font-size: 60px;
+  font-size: 80px;
   font-weight: 800;
   height: auto;
 }
 
-.wtg {
+.wtgbtn {
   display: inline;
   position: relative;
-  padding: 15px 20px;
+  padding: 18px 23px;
   border: 0;
   color: rgb(0, 0, 0);
   border-radius: 30px;
   background-color: var(--python-green);
-  font-family: 'antique-olive-bold', sans-serif;
   transition: background-color 1s ease;
   transform: translateY(10%);
 }
@@ -801,10 +816,9 @@ ul>li {
 
 }
 
-.work_together>div,
-.work_together>div>a,
-.cntcs_title>h1 {
+.antique-olive {
   font-family: 'antique-olive-bold', sans-serif;
+  font-weight: 800;
 
 }
 
@@ -819,7 +833,7 @@ ul>li {
   opacity: 0;
 }
 
-.wtg_inner {
+.wtgbtn_inner {
   width: 100%;
   height: 100%;
   position: relative;
@@ -828,35 +842,36 @@ ul>li {
   justify-content: center;
 }
 
-.wtg:hover>.wtg_inner>.gtch-static {
+.wtgbtn:hover>.wtgbtn_inner>.gtch-static {
   opacity: 0;
   transform: translateY(-100%);
 }
 
-.wtg:hover>.wtg_inner>.gtch-hover {
+.wtgbtn:hover>.wtgbtn_inner>.gtch-hover {
   opacity: 1;
   transform: translateY(0);
 }
 
 .lets {
-  grid-column: span 5 / span 5;
-  grid-column-start: 5;
+  grid-column: span 7 / span 7;
+  grid-column-start: 2;
   margin-left: 15px;
 }
 
 .work {
   grid-column: span 4 / span 4;
-  grid-column-start: 3;
+  grid-column-start: 1;
   margin-left: 50px;
+  grid-row: 2;
 }
 
 .get_in_touch {
   grid-column: span 5 / span 5;
-  grid-column-start: 7;
+  grid-column-start: 5;
   grid-row: 2;
-  margin-left: 20px;
+  margin-left: 30px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .get_in_touch>a:hover {
@@ -866,12 +881,13 @@ ul>li {
 
 .together {
   grid-column: span 5 / span 5;
-  grid-column-start: 5;
+  grid-column-start: 2;
 }
 
 /* --- --- WORK TOGETEHR STUFF END --- --- */
 /* --- --- CONTACTS STUFF START --- --- */
 #contacts {
+  margin-top: 70px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -883,54 +899,131 @@ ul>li {
 .contacts_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   text-align: left;
 }
 
 .cntcs_title>h1 {
-  font-size: 48px;
+  font-size: 45px;
   line-height: 1;
-  margin-bottom: 20px;
   font-weight: 800;
   letter-spacing: -0.20rem
+}
+
+.cntcs_title {
+  margin-bottom: 20px;
 }
 
 .contacts {}
 
 .contact {
-  margin-left: 20px;
+  margin-left: 40px;
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   font-size: 20px;
-  height: 30px;
-  overflow-x: hidden;
+  margin-bottom: 20px;
+  height: 50px;
+  font-weight: 400;
+  /* overflow-x: hidden; */
 }
 
-.contact>i {
+.contact>.slides_out {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   position: absolute;
   transition: all 0.9s ease;
   right: 0;
   opacity: 0;
 }
 
-.contact:hover>i {
+.contact:hover>.slides_out {
   top: auto;
-  right: 20px;
+  right: 10px;
   opacity: 1;
 }
 
-.contact:hover>a {
-  left: 20px;
+.contact:hover>span {
+  left: 10px;
 }
 
-.contact>a {
+.contact>span {
   top: auto;
   position: absolute;
   transition: all 0.9s ease;
   left: 0;
 }
+
+.contact::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transition: background-position-x ease 1.5s;
+}
+
+.contact.instagram::before {
+  background: linear-gradient(to right, #4f5bd5, #962fbf, #d62976, #fa7e1e, #feda75, #3b3b3b 50%);
+  background-size: 250% 100%;
+  background-position-x: 100%;
+}
+
+.contact.discord::before {
+  background: linear-gradient(to right, var(--discord-blue) 40%, #3b3b3b 50%);
+  background-size: 250% 100%;
+  background-position-x: 100%;
+}
+
+.contact.reddit::before {
+  background: linear-gradient(to right, var(--reddit-orange) 40%, #3b3b3b 50%);
+  background-size: 250% 100%;
+  background-position-x: 100%;
+}
+
+.contact.telegram::before {
+  background: linear-gradient(to right, var(--telegram-blue) 40%, #3b3b3b 50%);
+  background-size: 250% 100%;
+  background-position-x: 100%;
+}
+
+.contact.github::before {
+  background: linear-gradient(to right, white 40%, #3b3b3b 50%);
+  background-size: 250% 100%;
+  background-position-x: 100%;
+}
+
+.contact.gmail::before {
+  background: linear-gradient(to right, var(--gmail-red) 40%, #3b3b3b 50%);
+  background-size: 250% 100%;
+  background-position-x: 100%;
+}
+
+.discord>.slides_out {
+  color: var(--discord-blue)
+}
+
+.reddit>.slides_out {
+  color: var(--reddit-orange)
+}
+
+.telegram>.slides_out {
+  color: var(--telegram-blue)
+}
+
+.github>.slides_out {
+  color: white
+}
+
+.gmail>.slides_out {
+  color: var(--gmail-red)
+}
+
+.contact:hover::before {
+  background-position-x: 0%;
+}
+
 
 /* .contact {
   position: relative;
@@ -1103,7 +1196,7 @@ ul>li {
     margin-top: 10px;
   }
 
-  .wtg {
+  .wtgbtn {
     margin-top: 10px;
   }
 }
