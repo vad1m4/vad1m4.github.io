@@ -185,13 +185,13 @@ window.addEventListener(
 addEvent(
     document.querySelector(".projects_text"),
     "mouseover",
-    anim_projects()
+    anim_projects
 )
 
 addEvent(
     document.querySelector(".projects_text"),
     "click",
-    anim_projects()
+    anim_projects
 )
 
 // glowing shit for projects
