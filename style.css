@@ -997,6 +997,27 @@ ul>li {
   color: var(--gmail-red)
 }
 
+.slides_in {
+  opacity: 0;
+  filter: blur(10px);
+  transition: all 0.5s ease;
+}
+
+.contact:hover>.slides_in {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+.socialmedia {
+  transition: all 0.5s ease;
+}
+
+.contact:hover>.socialmedia {
+  opacity: 0;
+  filter: blur(10px);
+}
+
+
 .contact:hover::before {
   background-position-x: 0%;
 }
@@ -1052,6 +1073,13 @@ ul>li {
 } */
 
 /* --- --- CONTACTS STUFF END --- --- */
+/* --- --- SEND EMAIL STUFF --- --- */
+.send_email_container {
+  position: relative;
+  z-index: 4;
+}
+
+/* --- --- SEND EMAIL STUFF END --- --- */
 /* --- --- GENERAL STUFF --- --- */
 .mbl-hdr {
   display: block;
