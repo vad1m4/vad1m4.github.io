@@ -217,15 +217,15 @@ const observer = new IntersectionObserver((elements) => {
     elements.forEach((element) => {
         if (element.isIntersecting) {
             element.target.classList.add("visible");
-        }
+        };
     });
 });
 projects.forEach(project => {
-    observer.observe(project)
+    observer.observe(project);
 });
 
 const projectS = document.getElementById('project-s');
-const changeWidthElements = document.querySelectorAll('.width-dynamic-projects')
+const changeWidthElements = document.querySelectorAll('.width-dynamic-projects');
 function calcRowItem() {
     const height = projectS.offsetHeight;
     changeWidthElements.forEach(element => {
@@ -237,25 +237,64 @@ function calcRowItem() {
             element.classList.remove('mbl-hdr')
         } else {
             element.style.setProperty('max-width', null);
-            element.classList.add('mbl-hdr')
+            element.classList.add('mbl-hdr');
         };
     });
-}
+};
 
 addEvent(
     window,
     "load",
     calcRowItem
-)
+);
 
 addEvent(
     window,
     "resize",
     calcRowItem
-)
+);
 
-const animated = document.querySelectorAll('.animated')
+const animated = document.querySelectorAll('.animated');
 animated.forEach(element => {
     observer.observe(element)
 });
 
+
+const footer = document.querySelector('.footer_main');
+const hovered = document.querySelectorAll('.hover');
+
+function changeHovered() {
+    hovered.forEach(element => {
+        element.classList.toggle('hovered')
+    });
+};
+
+addEvent(
+    footer,
+    "mouseover",
+    changeHovered
+);
+
+addEvent(
+    footer,
+    "mouseout",
+    changeHovered
+);
+
+const footerBg = document.querySelector('.footer_background');
+function fixHeight() {
+    print("resized")
+    footerBg.style.height = `${footer.offsetHeight + 1}px`;
+};
+
+addEvent(
+    window,
+    "resize",
+    fixHeight
+);
+
+addEvent(
+    window,
+    "load",
+    fixHeight
+);
